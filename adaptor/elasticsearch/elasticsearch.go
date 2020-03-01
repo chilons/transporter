@@ -12,6 +12,7 @@ import (
 
 	"github.com/compose/transporter/adaptor"
 	"github.com/compose/transporter/adaptor/elasticsearch/clients"
+
 	// used to call init function for each client to register itself
 	_ "github.com/compose/transporter/adaptor/elasticsearch/clients/all"
 	"github.com/compose/transporter/client"

@@ -1,4 +1,4 @@
-package v5
+package v7
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	elastic "gopkg.in/olivere/elastic.v5"
+	elastic "gopkg.in/olivere/elastic.v7"
 
 	"github.com/compose/transporter/adaptor/elasticsearch/clients"
 	"github.com/compose/transporter/client"
@@ -34,8 +34,8 @@ type Writer struct {
 }
 
 func init() {
-	constraint, _ := version.NewConstraint(">= 2.0, < 6.0")
-	clients.Add("v5", constraint, func(opts *clients.ClientOptions) (client.Writer, error) {
+	constraint, _ := version.NewConstraint(">= 7.0")
+	clients.Add("v7", constraint, func(opts *clients.ClientOptions) (client.Writer, error) {
 		esOptions := []elastic.ClientOptionFunc{
 			elastic.SetURL(opts.URLs...),
 			elastic.SetSniff(false),
@@ -81,7 +81,7 @@ func (w *Writer) Write(msg message.Msg) func(client.Session) (message.Msg, error
 		w.Lock()
 		w.confirmChan = msg.Confirms()
 		w.Unlock()
-		indexType := msg.Namespace()
+		// indexType := msg.Namespace()
 		var id string
 		if _, ok := msg.Data()["_id"]; ok {
 			id = msg.ID()
@@ -99,21 +99,24 @@ func (w *Writer) Write(msg message.Msg) func(client.Session) (message.Msg, error
 			// we need to flush any pending writes here or this could fail because we're using
 			// more than 1 worker
 			w.bp.Flush()
-			indexReq := elastic.NewBulkDeleteRequest().Index(w.index).Type(indexType).Id(id)
+			indexReq := elastic.NewBulkDeleteRequest().Index(w.index).Id(id)
 			if pID != "" {
 				indexReq.Routing(pID)
 			}
 			br = indexReq
 		case ops.Insert:
-			indexReq := elastic.NewBulkIndexRequest().Index(w.index).Type(indexType).Id(id)
+			indexReq := elastic.NewBulkIndexRequest().Index(w.index).Id(id)
 			if pID != "" {
-				indexReq.Parent(pID)
+				// indexReq.Parent(pID)
 				indexReq.Routing(pID)
 			}
+			// a := &bytes.Buffer{}
+			// json.NewEncoder(a).Encode(msg.Data().Get("options"))
+			// print(a.String())
 			indexReq.Doc(msg.Data())
 			br = indexReq
 		case ops.Update:
-			indexReq := elastic.NewBulkUpdateRequest().Index(w.index).Type(indexType).Id(id)
+			indexReq := elastic.NewBulkUpdateRequest().Index(w.index).Id(id)
 			if pID != "" {
 				indexReq.Parent(pID)
 				indexReq.Routing(pID)

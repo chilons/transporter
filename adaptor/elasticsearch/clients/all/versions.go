@@ -5,4 +5,5 @@ import (
 	_ "github.com/compose/transporter/adaptor/elasticsearch/clients/v1"
 	_ "github.com/compose/transporter/adaptor/elasticsearch/clients/v2"
 	_ "github.com/compose/transporter/adaptor/elasticsearch/clients/v5"
+	_ "github.com/compose/transporter/adaptor/elasticsearch/clients/v7"
 )
