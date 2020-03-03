@@ -1,6 +1,7 @@
 package postgres
 
 import (
+	"bytes"
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
@@ -127,6 +128,9 @@ func (t *Tailer) pluckFromLogicalDecoding(s *Session, filterFn client.NsFilterFu
 		log.With("op", action).With("table", schemaAndTable).Debugln("received")
 
 		docMap := parseLogicalDecodingData(dataMatches[4])
+		buf := bytes.Buffer{}
+		json.NewEncoder(&buf).Encode(docMap)
+		print(">>>>" + buf.String())
 		result = append(result, client.MessageSet{
 			Msg:  message.From(action, schemaAndTable, docMap),
 			Mode: commitlog.Sync,
@@ -134,6 +138,14 @@ func (t *Tailer) pluckFromLogicalDecoding(s *Session, filterFn client.NsFilterFu
 	}
 
 	return result, err
+}
+
+func unwrapQuotes(label string) string {
+	labelRunes := []rune(label)
+	if labelRunes[0] == '"' {
+		return string(labelRunes[1 : len(labelRunes)-1])
+	}
+	return label
 }
 
 func parseLogicalDecodingData(d string) data.Data {
@@ -215,7 +227,7 @@ func parseLogicalDecodingData(d string) data.Data {
 		}
 
 		// Set and reset
-		data[label] = casifyValue(value, valueType)
+		data[unwrapQuotes(label)] = casifyValue(value, valueType)
 
 		label = ""
 		labelFinished = false
@@ -227,8 +239,9 @@ func parseLogicalDecodingData(d string) data.Data {
 		valueEndCharacter = ""
 		valueFinished = false
 	}
+	println(unwrapQuotes(label))
 	if len(label) > 0 { // ensure we process any line ending abruptly
-		data[label] = casifyValue(value, valueType)
+		data[unwrapQuotes(label)] = casifyValue(value, valueType)
 	}
 	return data
 }
@@ -250,7 +263,7 @@ func casifyValue(value string, valueType string) interface{} {
 		return f
 	case valueType == "boolean":
 		return value == "true"
-	case valueType == "jsonb[]" || valueType == "json":
+	case valueType == "jsonb[]" || valueType == "json" || valueType == "jsonb":
 		var m map[string]interface{}
 		json.Unmarshal([]byte(value), &m)
 		return m
@@ -272,6 +285,12 @@ func casifyValue(value string, valueType string) interface{} {
 	case valueType == "timestamp without time zone":
 		// parse time like 2015-08-21 16:09:02.988058
 		t, err := time.Parse("2006-01-02 15:04:05.9", value)
+		if err != nil {
+			fmt.Printf("\nTime (%v) parse error: %v\n\n", value, err)
+		}
+		return t
+	case valueType == "timestamp with time zone":
+		t, err := time.Parse("2006-01-02 15:04:05.9-07", value)
 		if err != nil {
 			fmt.Printf("\nTime (%v) parse error: %v\n\n", value, err)
 		}
