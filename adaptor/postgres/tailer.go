@@ -130,7 +130,6 @@ func (t *Tailer) pluckFromLogicalDecoding(s *Session, filterFn client.NsFilterFu
 		docMap := parseLogicalDecodingData(dataMatches[4])
 		buf := bytes.Buffer{}
 		json.NewEncoder(&buf).Encode(docMap)
-		print(">>>>" + buf.String())
 		result = append(result, client.MessageSet{
 			Msg:  message.From(action, schemaAndTable, docMap),
 			Mode: commitlog.Sync,
