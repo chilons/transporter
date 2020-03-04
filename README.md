@@ -2,6 +2,8 @@
 
 Compose Transporter helps with database transformations from one store to another.  It can also sync from one to another or several stores.
 
+**This is a fork that adds Elasticsearch v7 support and fixes some issues with PostgresQL** (buggy behavior with updates on `camelCased` fields, `jsonb` fields being understood as text).
+
 Transporter
 ===========
 
