@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/compose/transporter/client"
-	"github.com/compose/transporter/message"
+	"github.com/chilons/transporter/client"
+	"github.com/chilons/transporter/message"
 )
 
 var (

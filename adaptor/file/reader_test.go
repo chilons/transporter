@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/compose/transporter/adaptor"
-	"github.com/compose/transporter/client"
+	"github.com/chilons/transporter/adaptor"
+	"github.com/chilons/transporter/client"
 )
 
 func TestRead(t *testing.T) {

@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/compose/transporter/adaptor"
-	"github.com/compose/transporter/message"
-	"github.com/compose/transporter/message/data"
-	"github.com/compose/transporter/message/ops"
+	"github.com/chilons/transporter/adaptor"
+	"github.com/chilons/transporter/message"
+	"github.com/chilons/transporter/message/data"
+	"github.com/chilons/transporter/message/ops"
 )
 
 var optests = []struct {

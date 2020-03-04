@@ -1,8 +1,8 @@
 package client
 
 import (
-	"github.com/compose/transporter/commitlog"
-	"github.com/compose/transporter/message"
+	"github.com/chilons/transporter/commitlog"
+	"github.com/chilons/transporter/message"
 )
 
 // MessageChanFunc represents the func signature needed to send messages to downstream adaptors.

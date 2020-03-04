@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/compose/transporter/log"
-	"github.com/compose/transporter/message"
-	"github.com/compose/transporter/message/ops"
+	"github.com/chilons/transporter/log"
+	"github.com/chilons/transporter/message"
+	"github.com/chilons/transporter/message/ops"
 	"github.com/streadway/amqp"
 )
 

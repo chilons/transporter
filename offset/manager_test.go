@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/compose/transporter/offset"
+	"github.com/chilons/transporter/offset"
 )
 
 var (

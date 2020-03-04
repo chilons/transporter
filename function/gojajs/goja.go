@@ -6,11 +6,11 @@ import (
 	"time"
 
 	"github.com/compose/mejson"
-	"github.com/compose/transporter/function"
-	"github.com/compose/transporter/log"
-	"github.com/compose/transporter/message"
-	"github.com/compose/transporter/message/data"
-	"github.com/compose/transporter/message/ops"
+	"github.com/chilons/transporter/function"
+	"github.com/chilons/transporter/log"
+	"github.com/chilons/transporter/message"
+	"github.com/chilons/transporter/message/data"
+	"github.com/chilons/transporter/message/ops"
 	gojaVM "github.com/dop251/goja"
 )
 

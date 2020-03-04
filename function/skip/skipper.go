@@ -7,8 +7,8 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/compose/transporter/function"
-	"github.com/compose/transporter/message"
+	"github.com/chilons/transporter/function"
+	"github.com/chilons/transporter/message"
 )
 
 type unknownOperatorError struct {

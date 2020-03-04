@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/compose/transporter/log"
+	"github.com/chilons/transporter/log"
 )
 
 // Event is an interface that describes data which is produced periodically by the running transporter.

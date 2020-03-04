@@ -5,9 +5,9 @@ import (
 	"strings"
 
 	"github.com/compose/mejson"
-	"github.com/compose/transporter/function"
-	"github.com/compose/transporter/log"
-	"github.com/compose/transporter/message"
+	"github.com/chilons/transporter/function"
+	"github.com/chilons/transporter/log"
+	"github.com/chilons/transporter/message"
 )
 
 const (

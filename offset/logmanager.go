@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/compose/transporter/commitlog"
-	"github.com/compose/transporter/log"
+	"github.com/chilons/transporter/commitlog"
+	"github.com/chilons/transporter/log"
 )
 
 const (

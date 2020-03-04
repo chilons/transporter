@@ -5,9 +5,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/compose/transporter/client"
-	"github.com/compose/transporter/message"
-	"github.com/compose/transporter/message/ops"
+	"github.com/chilons/transporter/client"
+	"github.com/chilons/transporter/message"
+	"github.com/chilons/transporter/message/ops"
 )
 
 func TestWrite(t *testing.T) {

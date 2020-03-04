@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	_ "github.com/compose/transporter/log"
-	"github.com/compose/transporter/message/ops"
+	_ "github.com/chilons/transporter/log"
+	"github.com/chilons/transporter/message/ops"
 
 	"gopkg.in/mgo.v2/bson"
 )

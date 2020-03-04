@@ -3,8 +3,8 @@ package postgres
 import (
 	"sync"
 
-	"github.com/compose/transporter/adaptor"
-	"github.com/compose/transporter/client"
+	"github.com/chilons/transporter/adaptor"
+	"github.com/chilons/transporter/client"
 
 	_ "github.com/lib/pq" // import pq driver
 )

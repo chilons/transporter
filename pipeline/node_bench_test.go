@@ -3,9 +3,9 @@ package pipeline
 import (
 	"testing"
 
-	"github.com/compose/transporter/offset"
+	"github.com/chilons/transporter/offset"
 
-	"github.com/compose/transporter/message"
+	"github.com/chilons/transporter/message"
 )
 
 func BenchmarkNodeWrite(b *testing.B) {

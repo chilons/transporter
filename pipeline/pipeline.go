@@ -3,7 +3,7 @@ package pipeline
 import (
 	"time"
 
-	"github.com/compose/transporter/events"
+	"github.com/chilons/transporter/events"
 )
 
 // A Pipeline is a the end to end description of a transporter data flow.

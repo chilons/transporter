@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/compose/transporter/client"
+	"github.com/chilons/transporter/client"
 	"github.com/hashicorp/go-version"
 )
 

@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/compose/transporter/log"
+	"github.com/chilons/transporter/log"
 )
 
 type counter struct {

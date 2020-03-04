@@ -7,9 +7,9 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/compose/transporter/adaptor"
-	"github.com/compose/transporter/client"
-	"github.com/compose/transporter/message"
+	"github.com/chilons/transporter/adaptor"
+	"github.com/chilons/transporter/client"
+	"github.com/chilons/transporter/message"
 )
 
 var (

@@ -3,7 +3,7 @@ package postgres
 import (
 	"database/sql"
 
-	"github.com/compose/transporter/client"
+	"github.com/chilons/transporter/client"
 )
 
 var _ client.Session = &Session{}

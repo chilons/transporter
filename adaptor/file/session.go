@@ -3,7 +3,7 @@ package file
 import (
 	"os"
 
-	"github.com/compose/transporter/client"
+	"github.com/chilons/transporter/client"
 )
 
 // Session serves as a wrapper for the underlying file

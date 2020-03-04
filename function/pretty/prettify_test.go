@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/compose/transporter/function"
-	_ "github.com/compose/transporter/log"
-	"github.com/compose/transporter/message"
-	"github.com/compose/transporter/message/ops"
+	"github.com/chilons/transporter/function"
+	_ "github.com/chilons/transporter/log"
+	"github.com/chilons/transporter/message"
+	"github.com/chilons/transporter/message/ops"
 
 	bson "gopkg.in/mgo.v2/bson"
 )

@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/compose/transporter/offset"
-	"github.com/compose/transporter/pipeline"
+	"github.com/chilons/transporter/offset"
+	"github.com/chilons/transporter/pipeline"
 )
 
 func TestNewBuilder(t *testing.T) {

@@ -3,7 +3,7 @@ package commitlog
 import (
 	"io"
 
-	"github.com/compose/transporter/message/ops"
+	"github.com/chilons/transporter/message/ops"
 )
 
 const (
